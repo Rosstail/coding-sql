@@ -1,0 +1,1 @@
+CREATE DATABASE bdd_antho_ross CHARACTER set 'utf-8';
