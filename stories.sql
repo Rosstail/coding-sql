@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS database_antho_ross CHARACTER set 'utf8';
 /*CREER TABLES*/
 CREATE TABLE IF NOT EXISTS users (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_mail_adress VARCHAR(40) NOT NULL UNIQUE,
+    user_mail_adress VARCHAR(80) NOT NULL UNIQUE,
     user_password VARCHAR(191) NOT NULL,
     user_nickname VARCHAR(20) NOT NULL UNIQUE,
     user_postal_adress VARCHAR(30),
@@ -63,5 +63,5 @@ VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-12'),
 UPDATE users
 SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', user_city = 'Paris', user_country = 'France', user_cellphone_number = '0600000000', user_phone_number = '0100000000'
 
-/*DETRUIRE LA BASE
-DROP DATABASE IF EXISTS database_antho_ross;*/
+/*DETRUIRE LA BASE*/
+/*DROP DATABASE IF EXISTS database_antho_ross;*/
