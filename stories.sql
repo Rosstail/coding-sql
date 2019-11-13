@@ -1,12 +1,13 @@
+/*CREER BASE DE DONNEE DANS NEW*/
 CREATE DATABASE IF NOT EXISTS database_antho_ross CHARACTER set 'utf8';
 
-/*CREER TABLES*/
+/*CREER TABLES DANS LA BDD*/
 CREATE TABLE IF NOT EXISTS users (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_mail_adress VARCHAR(80) NOT NULL UNIQUE,
     user_password VARCHAR(191) NOT NULL,
     user_nickname VARCHAR(20) NOT NULL UNIQUE,
-    user_postal_adress VARCHAR(30),
+    user_postal_adress VARCHAR(50),
     user_postal_code INT(5) UNSIGNED,
     user_city VARCHAR(20),
     user_country VARCHAR(20),
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS messages (
     PRIMARY KEY (message_id)
     );
 
-/*INSCRIRE LES UTILISATEURS*/
+/*INSCRIRE LES UTILISATEURS DANS LA TABLE USERS*/
 INSERT INTO users (user_mail_adress, user_password, user_nickname, user_signup_date)
 VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-12'),
 		('ironuppercut@hotmail.fr', 'YouUglyMotherFucker', 'kingofskill', '2019-10-8'),
@@ -63,5 +64,17 @@ VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-12'),
 UPDATE users
 SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', user_city = 'Paris', user_country = 'France', user_cellphone_number = '0600000000', user_phone_number = '0100000000'
 
+/*INSCRIRE LES SERVICES DANS LA TABLE SERVICES*/
+INSERT INTO services (user_id, service_name, service_description, service_postal_adress, service_postal_code, service_city, service_country, service_date_time, service_complementary_informations)
+VALUES  ('1', 'Coding Factory Paris', 'La crême de la crême', '8 Avenue de la Porte de Champerret', '75017', 'Paris', 'France', '1996-04-01', NULL),
+        ('2', 'Coding Factory Cergy', 'La priorité', '35 Boulevard du Port', '95000', 'Cergy', 'France', '1996-04-01', NULL),
+        ('3', 'American Breakfast', 'That''s pretty good !', '17 Rue des Écoles', '75005', 'Paris', 'France', '1996-04-01', NULL),
+        ('4', 'Parc des Expositions', 'JAPAN EXPO', '1 Place de la Porte de Versailles', '75015', 'Paris', 'France', '1996-04-01', NULL),
+        ('5', 'Laser Quest Massy', 'Piou piou piou', '8 Rue du Buisson aux Fraises', '91300', 'Massy', 'France', '1996-04-01', NULL),
+        ('6', 'Beach Bowling Bel Epine', '<STRIKE>', 'Centre Commercial Belle Epine', '94320', 'Bel Epine', 'France', '1996-04-01', NULL),
+        ('7', 'Golf 18 trous', 'Allez...', 'Terrain de Golf', '44210', 'Pornic', 'France', '1996-04-01', NULL),
+        ('8', 'Centre Commercial Vélizy 2', 'Tu ne ressortiras jamais riche !', '2 Avenue de l''Europe', '78140', 'Vélizy-Villacoublay', 'France', '1996-04-01', NULL),
+        ('9', 'Château de Chambord', 'TRIBOULETTE !', 'Château', '41250', 'Chambord', 'France', '1996-04-01', NULL),
+        ('10', 'L''Île Penotte', 'Rue aux coquillages muraux', 'Île Penotte', '95000', 'Les Sables d''Olonne', 'France', '1996-04-01', NULL);
 /*DETRUIRE LA BASE*/
-/*DROP DATABASE IF EXISTS database_antho_ross;*/
+#DROP DATABASE IF EXISTS database_antho_ross;
