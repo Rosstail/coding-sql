@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS services (
     service_user_id INT UNSIGNED NOT NULL,
     service_name VARCHAR(40) NOT NULL,
     service_description VARCHAR(100) NOT NULL,
-    service_postal_adress VARCHAR(30) NOT NULL,
+    service_postal_adress VARCHAR(50) NOT NULL,
     service_postal_code INT(5) UNSIGNED NOT NULL,
     service_city VARCHAR(20) NOT NULL,
     service_country VARCHAR(20) NOT NULL,
@@ -65,7 +65,7 @@ UPDATE users
 SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', user_city = 'Paris', user_country = 'France', user_cellphone_number = '0600000000', user_phone_number = '0100000000'
 
 /*INSCRIRE LES SERVICES DANS LA TABLE SERVICES*/
-INSERT INTO services (user_id, service_name, service_description, service_postal_adress, service_postal_code, service_city, service_country, service_date_time, service_complementary_informations)
+INSERT INTO services (service_user_id, service_name, service_description, service_postal_adress, service_postal_code, service_city, service_country, service_date_time, service_complementary_informations)
 VALUES  ('1', 'Coding Factory Paris', 'La crême de la crême', '8 Avenue de la Porte de Champerret', '75017', 'Paris', 'France', '2019-11-09', NULL),
         ('2', 'Coding Factory Cergy', 'La priorité', '35 Boulevard du Port', '95000', 'Cergy', 'France', '2019-11-11', NULL),
         ('3', 'American Breakfast', 'That''s pretty good !', '17 Rue des Écoles', '75005', 'Paris', 'France', '2019-11-13', NULL),
