@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS users_services (
     users_services_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     users_services_service_id INT UNSIGNED NOT NULL,
     users_services_user_id INT UNSIGNED NOT NULL,
-    PRIMARY KEY (user_service_id)
+    PRIMARY KEY (users_services_id)
     );
 
 CREATE TABLE IF NOT EXISTS messages (
