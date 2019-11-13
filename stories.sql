@@ -59,5 +59,9 @@ VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-12'),
 		('streetsof_rage@gmail.fr', 'hahahaha', 'Mr.X', '2084-06-27'),
 		('coding_factory@wanadoomdrtrolol.beleugiqueuh', 'mdrlabelgique', 'jacquouille', '1976-01-12');
 
+/*METTRE A JOUR LES UTILISATEURS*/
+UPDATE users
+SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', user_city = 'Paris', user_country = 'France', user_cellphone_number = '0600000000', user_phone_number = '0100000000'
+
 /*DETRUIRE LA BASE
 DROP DATABASE IF EXISTS database_antho_ross;*/
