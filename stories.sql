@@ -121,12 +121,14 @@ VALUES ('1', '3', 'Mon dîner a été mangé par les forces du mal de Ganon.','2
       ('10', '7', '...','2019-11-22 02:03:04'),
       ('10', '8', 'Non, ça c''est nul à chier.','2019-11-22 10:00:00');
 
-#story-8
+/*AFFICHER RECEVEUR, CONTENU TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 8
+Lancer ça dans le SQL de la BDD*/
 SELECT message_receiver_id, message_content
 FROM messages
 ORDER BY message_sent_date_time DESC;
 
-#story-9
+/*AFFICHER EXPEDITEUR RECEVEUR CONTENU TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 9
+Lancer ça dans le SQL de la BDD*/
 SELECT message_expeditor_id, message_receiver_id, message_content
 FROM messages
 ORDER BY message_sent_date_time DESC;
