@@ -76,5 +76,21 @@ VALUES  ('1', 'Coding Factory Paris', 'La crême de la crême', '8 Avenue de la 
         ('8', 'Centre Commercial Vélizy 2', 'Tu ne ressortiras jamais riche !', '2 Avenue de l''Europe', '78140', 'Vélizy-Villacoublay', 'France', '1996-04-01', NULL),
         ('9', 'Château de Chambord', 'TRIBOULETTE !', 'Château', '41250', 'Chambord', 'France', '1996-04-01', NULL),
         ('10', 'L''Île Penotte', 'Rue aux coquillages muraux', 'Île Penotte', '95000', 'Les Sables d''Olonne', 'France', '1996-04-01', NULL);
+
+/*INSCRIRE LES UTILISATEURS AU SERVICE*/
+INSERT INTO users_services (user_id, service_id)
+VALUES  ('1', '2'),
+        ('2', '4'),
+        ('3', '8'),
+        ('4', '1'),
+        ('5', '7'),
+        ('6', '10'),
+        ('7', '1'),
+        ('8', '3'),
+        ('9', '6'),
+        ('10', '5'),
+        ('4', '6'),
+        ('6', '2');
+
 /*DETRUIRE LA BASE*/
 #DROP DATABASE IF EXISTS database_antho_ross;
