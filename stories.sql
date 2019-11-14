@@ -185,12 +185,16 @@ WHERE services_datetime < '2011-11-19' AND users_services_datetime < '2011-11-19
 ORDER BY services_datetime DESC AND service_city ASC
 
 #STORY 11
-#story-11 non fini
 SELECT S.service_complementary_informations, U.user_nickname, U.user_cellphone_number, U.user_phone_number
 FROM services AS S
 RIGHT JOIN users AS U
 LEFT JOIN users_services AS US
 WHERE S.service_id = 12 AND S.service_user_id = U.user_id;
+
+
+#STORY 16
+SELECT S.*
+FROM services AS
 
 /*DETRUIRE LA BASE*/
 #DROP DATABASE IF EXISTS database_antho_ross;
