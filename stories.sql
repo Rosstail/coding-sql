@@ -1,7 +1,8 @@
-/*CREER BASE DE DONNEE DANS NEW - STORY 1*/
+/*
+    STORY 1
+*/
 CREATE DATABASE IF NOT EXISTS database_antho_ross CHARACTER set 'utf8';
 
-/*CREER TABLES DANS LA BDD*/
 CREATE TABLE IF NOT EXISTS users (
     user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_mail_adress VARCHAR(80) NOT NULL UNIQUE,
@@ -48,7 +49,9 @@ CREATE TABLE IF NOT EXISTS messages (
     PRIMARY KEY (message_id)
     );
 
-/*INSCRIRE LES UTILISATEURS DANS LA TABLE USERS - STORY 3*/
+/*I
+        STORY 3
+*/
 INSERT INTO users (user_mail_adress, user_password, user_nickname, user_signup_date)
 VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-08'),
 		('ironuppercut@hotmail.fr', 'YouUglyMotherFucker', 'kingofskill', '2019-11-09'),
@@ -61,11 +64,15 @@ VALUES	('banana_slama@gmail.com', 'GottaGetaGrip', 'DK', '2019-11-08'),
 		('streetsof_rage@gmail.fr', 'hahahaha', 'Mr.X', '2019-11-16'),
 		('coding_factory@wanadoomdrtrolol.beleugiqueuh', 'mdrlabelgique', 'jacquouille', '2019-11-17');
 
-/*METTRE A JOUR LES UTILISATEURS - STORY 4*/
+/*
+        STORY 4
+*/
 UPDATE users
 SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', user_city = 'Paris', user_country = 'France', user_cellphone_number = '0600000000', user_phone_number = '0100000000'
 
-/*INSCRIRE LES SERVICES DANS LA TABLE SERVICES - STORY 5*/
+/*
+        STORY 5
+*/
     INSERT INTO services (service_user_id, service_name, service_description, service_postal_adress, service_postal_code, service_city, service_country, service_date_time, service_complementary_informations)
     VALUES  ('1', 'Coding Factory Paris', 'La crême de la crême', '8 Avenue de la Porte de Champerret', '75017', 'Paris', 'France', '2019-11-10', NULL),
             ('2', 'Coding Factory Cergy', 'La priorité', '35 Boulevard du Port', '95000', 'Cergy', 'France', '2019-11-09', NULL),
@@ -78,7 +85,9 @@ SET user_postal_adress = 'Très loin vers le nord', user_postal_code = '75001', 
             ('9', 'Château de Chambord', 'TRIBOULETTE !', 'Château', '41250', 'Chambord', 'France', '2019-11-16', NULL),
             ('10', 'L''Île Penotte', 'Rue aux coquillages muraux', 'Île Penotte', '95000', 'Les Sables d''Olonne', 'France', '2019-11-17', NULL);
 
-/*INSCRIRE LES UTILISATEURS AU SERVICE - STORY 6*/
+/*
+        STORY 6
+*/
 INSERT INTO users_services (users_services_user_id, users_services_service_id, users_services_datetime)
 VALUES  ('1', '2', '2019-11-18 08:03:03'),
         ('2', '4', '2019-11-18 12:08:54'),
@@ -93,7 +102,9 @@ VALUES  ('1', '2', '2019-11-18 08:03:03'),
         ('4', '6', '2019-11-19 19:43:41'),
         ('6', '2', '2019-11-19 23:09:09');
 
-/*EMETEUR/RECEPTER/CONTENU/DATE MESSAGE - STORY 7*/
+/*
+        STORY 7
+*/
 INSERT INTO messages (message_expeditor_id, message_receiver_id, message_content, message_sent_date_time)
 VALUES ('1', '3', 'Mon dîner a été mangé par les forces du mal de Ganon.','2019-11-19 23:43:23'),
       ('1', '6', 'Je pars pour Gamelon pour l''attaquer.','2019-11-20 06:49:56'),
@@ -121,6 +132,44 @@ VALUES ('1', '3', 'Mon dîner a été mangé par les forces du mal de Ganon.','2
       ('10', '7', '...','2019-11-22 02:03:04'),
       ('10', '8', 'Non, ça c''est nul à chier.','2019-11-22 10:00:00');
 
+/*
+        STORY 9
+*/
+SELECT message_expeditor_id, message_receiver_id, message_content
+FROM messages
+WHERE (message_expeditor_id = '8' && message_receiver_id = '3') || (message_expeditor_id = '3' && message_receiver_id = '8')
+ORDER BY message_sent_date_time DESC;
+
+/*
+        STORY 12
+*/
+DELETE S FROM services AS S && US FROM users_services
+WHERE S.service_id = 9 && US.service_id = S.service_id
+
+/*
+        STORY 13
+*/
+DELETE US FROM users_services AS US
+LEFT JOIN users AS U ON U.user_id = 4
+LEFT JOIN services AS S ON S.service_id = 3
+WHERE US.users_services_service_id = S.service_id AND US.users_services_user_id = U.user_id;
+
+/*
+        STORY 14
+*/
+DELETE U S US M FROM users AS U AND services AS S AND users_services AS US AND messages AS M
+WHERE U.user_id = 3 AND S.service_user_id = U.user_id AND US.users_services_service_id = U.user_id AND M.message_expeditor_id = U.user_id;
+
+/*
+        STORY 15
+*/
+DELETE M FROM messages AS M
+WHERE M.message_id = 12;
+
+/*
+        STORIES A FAIRE
+*/
+
 /*AFFICHER RECEVEUR, CONTENU TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 8
 Lancer ça dans le SQL de la BDD*/
 SELECT message_receiver_id, message_expeditor_id, message_content
@@ -128,15 +177,20 @@ FROM messages
 WHERE message_receiver_id = '4' || message_expeditor_id = '4'
 ORDER BY message_sent_date_time DESC;
 
-/*AFFICHER CONVERSATIONS TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 9
-Lancer ça dans le SQL de la BDD*/
-SELECT message_expeditor_id, message_receiver_id, message_content
-FROM messages
-WHERE (message_expeditor_id = '8' && message_receiver_id = '3') || (message_expeditor_id = '3' && message_receiver_id = '8')
-ORDER BY message_sent_date_time DESC;
 
-SELECT S.*, U.user_nickname, U.user_phone_number, IF EXISTS US.users_services_service_id
-FROM services AS S, users AS U, users_services AS US
-WHERE (service_id = '3')
+#STORY 10
+SELECT service_name, service_postal_code, service_city, service_country
+FROM services
+WHERE services_datetime < '2011-11-19' AND users_services_datetime < '2011-11-19'
+ORDER BY services_datetime DESC AND service_city ASC
+
+#STORY 11
+#story-11 non fini
+SELECT S.service_complementary_informations, U.user_nickname, U.user_cellphone_number, U.user_phone_number
+FROM services AS S
+RIGHT JOIN users AS U
+LEFT JOIN users_services AS US
+WHERE S.service_id = 12 AND S.service_user_id = U.user_id;
+
 /*DETRUIRE LA BASE*/
 #DROP DATABASE IF EXISTS database_antho_ross;
