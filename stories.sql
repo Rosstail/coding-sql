@@ -123,15 +123,20 @@ VALUES ('1', '3', 'Mon dîner a été mangé par les forces du mal de Ganon.','2
 
 /*AFFICHER RECEVEUR, CONTENU TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 8
 Lancer ça dans le SQL de la BDD*/
-SELECT message_receiver_id, message_content
+SELECT message_receiver_id, message_expeditor_id, message_content
 FROM messages
+WHERE message_receiver_id = '4' || message_expeditor_id = '4'
 ORDER BY message_sent_date_time DESC;
 
-/*AFFICHER EXPEDITEUR RECEVEUR CONTENU TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 9
+/*AFFICHER CONVERSATIONS TRIE PAR DATE/HEURE RECENT-> ANCIEN - STORY 9
 Lancer ça dans le SQL de la BDD*/
 SELECT message_expeditor_id, message_receiver_id, message_content
 FROM messages
+WHERE (message_expeditor_id = '8' && message_receiver_id = '3') || (message_expeditor_id = '3' && message_receiver_id = '8')
 ORDER BY message_sent_date_time DESC;
 
+SELECT S.*, U.user_nickname, U.user_phone_number, IF EXISTS US.users_services_service_id
+FROM services AS S, users AS U, users_services AS US
+WHERE (service_id = '3')
 /*DETRUIRE LA BASE*/
 #DROP DATABASE IF EXISTS database_antho_ross;
